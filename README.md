@@ -14,11 +14,11 @@ It integrates:
 - Dense Semantic Retrieval (Sentence-BERT)
 - LLM-based Reranking (Mistral-7B)
 - Query Expansion Techniques (NLS, KS, RM3, T5)
-- Patient eligibility criteria-based scoring penalties (Age and Gender)
+
 
 ---
 
-## 🚀 Features
+##  Features
 
 | Feature | Description |
 |:--------|:------------|
@@ -29,7 +29,7 @@ It integrates:
 | **BM25 Retrieval** | Classical sparse retrieval using probabilistic term weighting. |
 | **Sentence-BERT Reranking** | Re-ranks top documents based on semantic similarity. |
 | **Mistral-7B Reranking** | Large Language Model-based deep contextual reranking. |
-| **Patient Eligibility Filtering** | Penalizes scores for trials that do not match patient age and gender criteria. |
+
 
 ---
 
