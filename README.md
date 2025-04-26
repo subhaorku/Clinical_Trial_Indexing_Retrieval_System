@@ -33,7 +33,7 @@ It integrates:
 
 ---
 
-## 🛠 Installation
+##  Installation
 
 To run this project, follow these steps:
 
@@ -55,8 +55,9 @@ conda install -c conda-forge openjdk=11
 conda env config vars set JAVA_HOME=$(dirname $(dirname $(which java)))
 conda deactivate
 conda activate disease
+```
 
-Project Structure
+## Project Structure
 
 File/Folder	Description
 extraction_of_doc.py	XML Parsing and metadata extraction
@@ -68,7 +69,7 @@ Unipd.py	Query expansion techniques implementation
 .gitignore	To avoid pushing large files and datasets
 
 
-Usage
+## Usage
 You can run the scripts in different modes based on your task:
 
 Retrieval and Reranking:
@@ -86,7 +87,7 @@ Run3, Run4: Other configurations (customized runs)
 
 
 
-Results Summary
+## Results Summary
 BM25 retrieval provides strong baseline results.
 
 Sentence-BERT improves semantic matching between patient queries and documents.
