@@ -5,7 +5,7 @@ _Spring Semester 2024-25_
 
 ---
 
-## 📖 Overview
+##  Overview
 
 This repository develops an advanced **clinical trial retrieval system** combining **sparse retrieval**, **semantic reranking**, and **query expansion techniques** to improve medical document retrieval accuracy. 
 
