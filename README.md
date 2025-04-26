@@ -1,61 +1,102 @@
-# Clinical-Trial-Retriever
-A repository for clinical trial retrieval using sparse retrieval , query summarization , query expansion 
-This project implements query expansion techniques for disease diagnosis queries using methods such as NLS (Natural Language Summarization), KS (Keyword Summarization), RM3 (Relevance Model 3), and T5 Summarization. These techniques improve search and retrieval accuracy for medical text-based datasets.After the Retrieval step, we have penalized the score of clinical trials for which a patient is not eligible (Exclusion Criteria : Age and Gender) .
+# Clinical Trial Retrieval System  
+**Using Two-Stage Hybrid Retrieval, Query Expansion, and LLM-based Reranking**
 
-## Features
+_Spring Semester 2024-25_
 
-- **NLS (Named Entity Summarization)**: Extracts key medical terms from patient descriptions.
-- **KS (Keyword Summarization)**: Generates unique query terms by filtering important keywords.
-- **RM3 (Relevance Model 3)**: Enhances retrieval performance through query expansion.
-- **T5 Summarization**: Uses the T5 transformer model to summarize lengthy medical text data.
+---
 
-## Installation
+## 📖 Overview
+
+This repository develops an advanced **clinical trial retrieval system** combining **sparse retrieval**, **semantic reranking**, and **query expansion techniques** to improve medical document retrieval accuracy. 
+
+It integrates:
+- Sparse Retrieval (BM25)
+- Dense Semantic Retrieval (Sentence-BERT)
+- LLM-based Reranking (Mistral-7B)
+- Query Expansion Techniques (NLS, KS, RM3, T5)
+- Patient eligibility criteria-based scoring penalties (Age and Gender)
+
+---
+
+## 🚀 Features
+
+| Feature | Description |
+|:--------|:------------|
+| **NLS (Natural Language Summarization)** | Summarizes queries by selecting key medical sentences. |
+| **KS (Keyword Summarization)** | Generates focused queries by extracting important keywords. |
+| **RM3 (Relevance Model 3)** | Traditional probabilistic query expansion technique for better retrieval. |
+| **T5 Summarization** | Uses the T5 Transformer to summarize medical queries and documents. |
+| **BM25 Retrieval** | Classical sparse retrieval using probabilistic term weighting. |
+| **Sentence-BERT Reranking** | Re-ranks top documents based on semantic similarity. |
+| **Mistral-7B Reranking** | Large Language Model-based deep contextual reranking. |
+| **Patient Eligibility Filtering** | Penalizes scores for trials that do not match patient age and gender criteria. |
+
+---
+
+## 🛠 Installation
 
 To run this project, follow these steps:
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Shreya2803/Clinical-Trial-Retriever.git
-## Important Installation to Run The Unipd.py file 
-Create a virtual environment and install important dependencies in the virtual environment.
+### Clone the repository:
 ```bash
+git clone https://github.com/subhaorku/Clinical_Trial_Indexing_Retrieval_System.git
+cd Clinical_Trial_Indexing_Retrieval_System
+
+Environment Setup:
+Create a dedicated environment and install all dependencies:
+
+bash
+Copy
+Edit
 conda create --name disease python=3.8
 conda activate disease
 conda update -n base -c defaults conda
 conda install -c conda-forge openjdk=11
-conda env config vars set JAVA_HOME=$(dirname $(dirname $(which java)))  [set the JAVA_HOME environment variable to point to the Java installation:]
-restart the Conda environment for the changes to take effect
+conda env config vars set JAVA_HOME=$(dirname $(dirname $(which java)))
 conda deactivate
 conda activate disease
-conda install -c huggingface transformers
-conda install -c anaconda numpy
-conda install -c conda-forge python-terrier nltk scikit-learn
-import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-Conda install nltk
-Conda install pandas
-Conda install torch
-Conda install sentencepiece
-```
-## Usage
 
-The Unipd.py script can be run in different modes based on the query expansion technique you'd like to apply. The script accepts one argument: the run mode.
+Project Structure
 
-Run Modes:
-Run_1: Applies NLS (Named Entity Summarization) for query expansion.
-Run_2: Applies KS (Keyword Summarization) for query expansion.
-Run_3: Applies RM3 (Relevance Model 3) for query expansion.
-Run_4: Combines KS and RM3 for query expansion.
-Run_5: Uses T5 summarization after applying NLS for query expansion.
+File/Folder	Description
+extraction_of_doc.py	XML Parsing and metadata extraction
+topics.xml	Input topics (patient queries)
+Index/	BM25 Index files (large, ignored from Git)
+Dataset/	Clinical trial dataset (ignored from Git)
+outputs/	Result files (TREC and JSON formats)
+Unipd.py	Query expansion techniques implementation
+.gitignore	To avoid pushing large files and datasets
 
-Example : To apply NLS summarization(Run_1) :
-```bash
-python Unipd.py Run_1
-```
-To apply KS (Keyword Summarization)/Run_2:
-```bash
-python Unipd.py Run_2
-```
-## Step By step Process:
-1. Download all the zip files/documents from  2023 Clinical Trials Track[https://www.trec-cds.org/2023.html].
+
+Usage
+You can run the scripts in different modes based on your task:
+
+Retrieval and Reranking:
+To run the hybrid retrieval and reranking system:
+
+bash
+Copy
+Edit
+python main.py Run1
+Run1: BM25 + Sentence-BERT + Hybrid scoring
+
+Run2: BM25 + LLM (Mistral-7B) reranking
+
+Run3, Run4: Other configurations (customized runs)
+
+
+
+Results Summary
+BM25 retrieval provides strong baseline results.
+
+Sentence-BERT improves semantic matching between patient queries and documents.
+
+Mistral-7B LLM-based reranking shows excellent contextual understanding.
+
+Query Expansion Techniques significantly enhance coverage and recall.
+
+Hybrid scoring balances classic and deep-learning-based retrieval models for best performance.
+
+Eligibility Filtering ensures only trials matching patient criteria are ranked high.
+
+
