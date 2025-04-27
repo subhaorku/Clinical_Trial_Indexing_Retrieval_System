@@ -45,9 +45,7 @@ cd Clinical_Trial_Indexing_Retrieval_System
 Environment Setup:
 Create a dedicated environment and install all dependencies:
 
-bash
-Copy
-Edit
+
 conda create --name disease python=3.8
 conda activate disease
 conda update -n base -c defaults conda
